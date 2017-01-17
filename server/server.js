@@ -24,7 +24,9 @@ app.post('/todos', (req, res) => {
 });
 
 
-
-app.listen(8080, ()=> {
-	console.log('started on port 300');
-});
+if(!module.parent) {
+   	app.listen(3000, ()=> {
+		console.log('started on port 300');
+	});
+}
+module.exports.app = app;
