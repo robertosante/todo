@@ -8,9 +8,14 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
 	console.log('connected to Mongodb server');
 
 	// delete one
+	
+	db.collection('Todos').deleteOne({
+		text: 'Eat lunch'
+	}).then((res) => {
+		console.log(res)
+	});
 
 	//delete many
-
 	db.collection('Todos').deleteMany({
 		text: 'Eat lunch'
 	}).then((res) => {
@@ -18,9 +23,11 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
 	});
 
 	// find one and delete
-
-	
-
+	db.collection('Todos').findOneAndDelete({
+		text: 'Something to do'
+	}).then((res) => {
+		console.log(res);
+	});
 
 	// db.close();
 });
